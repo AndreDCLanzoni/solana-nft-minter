@@ -1,0 +1,12 @@
+[workspace]
+members = ["programs/nft_minter"]
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[programs.localnet]
+nft_minter = "ReplaceWithYourProgramID11111111111111111111111111"
+
+[registry]
+url = "https://anchor.projectserum.com"
