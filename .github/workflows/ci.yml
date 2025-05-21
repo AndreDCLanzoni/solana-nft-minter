@@ -38,15 +38,6 @@ jobs:
           avm install latest
           avm use latest
           anchor --version
-
-          # Pin to the Solana-compatible nightly
-          rustup toolchain install nightly-2023-05-22
-          rustup override set nightly-2023-05-22
-
-          rustup component add llvm-tools-preview --toolchain nightly-2023-05-22
-          rustup target add bpfel-unknown-unknown --toolchain nightly-2023-05-22
-
-          cargo install cargo-build-sbf
           
       - name: Install JS dependencies
         run: |
