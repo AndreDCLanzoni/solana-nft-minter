@@ -1,6 +1,7 @@
 use anchor_lang::prelude::*;
 
-declare_id!(5fGkL4pt8GbmLVzYsZ8PNFY7Xact8H7Wxv5vfRTuSkB1);
+declare_id!("5fGkL4pt8GbmLVzYsZ8PNFY7Xact8H7Wxv5vfRTuSkB1");
+
 
 #[program]
 pub mod nft_minter {
