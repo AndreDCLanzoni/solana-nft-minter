@@ -1,6 +1,9 @@
 name: CI
+
 on:
   push:
+    branches: [ main ]
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -9,37 +12,28 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Rust
+      - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          profile: minimal
           override: true
 
       - name: Install Solana CLI
         run: |
-          curl -sSfL https://release.anza.xyz/stable/install | sh
-          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+          sudo apt-get update
+          sudo apt-get install -y curl
+          sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
           solana --version
 
       - name: Install Anchor CLI
         run: |
-          cargo install --git https://github.com/coral-xyz/anchor avm --force
+          cargo install --git https://github.com/coral-xyz/anchor avm --locked
           avm install latest
           avm use latest
           anchor --version
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install JS dependencies
-        run: |
-          cd nft_minter
-          npm ci
-
       - name: Run tests
         run: |
           cd nft_minter
-          anchor test --skip-build
-
+          anchor test --skip-deploy
