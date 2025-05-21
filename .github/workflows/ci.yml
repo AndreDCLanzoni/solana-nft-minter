@@ -27,12 +27,18 @@ jobs:
           export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
           solana --version
 
-      - name: Install Anchor CLI
+      - name: Install Anchor CLI & SBF toolchain
         run: |
+          # Anchor Version Manager
           cargo install --git https://github.com/coral-xyz/anchor avm --locked
           avm install latest
           avm use latest
           anchor --version
+
+          # SBF build support
+          rustup component add llvm-tools-preview
+          rustup target add bpfel-unknown-unknown
+          cargo install cargo-build-sbf
 
       - name: Run tests
         run: |
