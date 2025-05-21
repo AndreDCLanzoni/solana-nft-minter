@@ -19,14 +19,11 @@ jobs:
           profile: minimal
           override: true
 
-    - name: Install Solana CLI
+      - name: Install Solana CLI
         run: |
-          # Download & unpack the Solana CLI
           curl -sSfL https://release.solana.com/v1.18.3/solana-release-x86_64.tar.bz2 \
             | tar -xj -C $HOME
-          # Put the binaries on PATH
           export PATH="$HOME/solana-release/bin:$PATH"
-          # Check the version
           solana --version
 
       - name: Install Anchor CLI
@@ -40,3 +37,4 @@ jobs:
         run: |
           cd nft_minter
           anchor test --skip-deploy
+
