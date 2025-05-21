@@ -39,23 +39,23 @@ jobs:
           avm use latest
           anchor --version
 
-          # Pin to a specific nightly for BPF support
-          rustup toolchain install nightly-2023-08-15
-          rustup override set nightly-2023-08-15
+          # Pin to the Solana-compatible nightly
+          rustup toolchain install nightly-2023-05-22
+          rustup override set nightly-2023-05-22
 
-          rustup component add llvm-tools-preview --toolchain nightly-2023-08-15
-          rustup target add bpfel-unknown-unknown --toolchain nightly-2023-08-15
+          rustup component add llvm-tools-preview --toolchain nightly-2023-05-22
+          rustup target add bpfel-unknown-unknown --toolchain nightly-2023-05-22
 
           cargo install cargo-build-sbf
           
       - name: Install JS dependencies
         run: |
-         cd nft_minter
-         npm install
+          cd nft_minter
+          npm install
          
       - name: Run tests
         run: |
-         cd nft_minter
-         anchor test --skip-build --skip-deploy
+          cd nft_minter
+          anchor test --skip-build --skip-deploy
 
 # CI: pulled Solana CLI from GitHub Releases
