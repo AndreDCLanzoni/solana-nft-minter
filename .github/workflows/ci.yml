@@ -27,6 +27,10 @@ jobs:
           export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
           solana --version
           
+      - name: Remove Rust toolchain override
+        run: |
+          rm -f .rust-toolchain .rust-toolchain.toml
+
       - name: Install Anchor CLI & SBF toolchain
         run: |
           # Anchor Version Manager
