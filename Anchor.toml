@@ -1,0 +1,8 @@
+[workspace]
+members = ["programs/nft_minter"]
+
+[programs.localnet]
+nft_minter = "ReplaceWithYourProgramID11111111111111111111111111"
+
+[registry]
+url = "https://anchor.projectserum.com"
