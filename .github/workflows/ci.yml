@@ -28,7 +28,7 @@ jobs:
           solana --version
           
       - name: Remove all Rust toolchain overrides (root + all subdirs)
-        - run: |
+        run: |
           find . -name ".rust-toolchain*" -exec rm -f {} +
 
       - name: Install Anchor CLI & SBF toolchain
