@@ -26,25 +26,23 @@ jobs:
           # Add it to PATH immediately
           export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
           solana --version
+          
       - name: Install Anchor CLI & SBF toolchain
         run: |
-         # Anchor Version Manager
-         cargo install --git https://github.com/coral-xyz/anchor avm --locked
-         avm install latest
-         avm use latest
-         anchor --version
+          # Anchor Version Manager
+          cargo install --git https://github.com/coral-xyz/anchor avm --locked
+          avm install latest
+          avm use latest
+          anchor --version
 
-         # Switch to nightly for BPF support
-         rustup toolchain install nightly
-         # Override this directory to use nightly
-         rustup override set nightly
+          # Pin to a specific nightly for BPF support
+          rustup toolchain install nightly-2024-04-21
+          rustup override set nightly-2024-04-21
 
-         # Add LLVM & BPF target under nightly
-         rustup component add llvm-tools-preview --toolchain nightly
-         rustup target add bpfel-unknown-unknown --toolchain nightly
+          rustup component add llvm-tools-preview --toolchain nightly-2024-04-21
+          rustup target add bpfel-unknown-unknown --toolchain nightly-2024-04-21
 
-         # Install the BPF build helper
-         cargo install cargo-build-sbf
+          cargo install cargo-build-sbf
 
       - name: Run tests
         run: |
