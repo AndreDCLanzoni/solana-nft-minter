@@ -40,3 +40,4 @@ jobs:
           cd nft_minter
           anchor test --skip-deploy
 
+# CI: pulled Solana CLI from GitHub Releases
