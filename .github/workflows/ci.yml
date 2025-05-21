@@ -21,8 +21,10 @@ jobs:
 
       - name: Install Solana CLI
         run: |
-          curl -sSfL https://release.solana.com/v1.18.3/solana-release-x86_64.tar.bz2 \
+          # Download & unpack the Solana CLI directly from GitHub Releases
+          curl -sSfL https://github.com/solana-labs/solana/releases/download/v1.18.3/solana-release-x86_64.tar.bz2 \
             | tar -xj -C $HOME
+          # Add binaries to PATH immediately
           export PATH="$HOME/solana-release/bin:$PATH"
           solana --version
 
