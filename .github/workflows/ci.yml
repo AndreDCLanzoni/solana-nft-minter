@@ -40,11 +40,11 @@ jobs:
           anchor --version
 
           # Pin to a specific nightly for BPF support
-          rustup toolchain install nightly-2024-04-21
-          rustup override set nightly-2024-04-21
+          rustup toolchain install nightly-2023-08-15
+          rustup override set nightly-2023-08-15
 
-          rustup component add llvm-tools-preview --toolchain nightly-2024-04-21
-          rustup target add bpfel-unknown-unknown --toolchain nightly-2024-04-21
+          rustup component add llvm-tools-preview --toolchain nightly-2023-08-15
+          rustup target add bpfel-unknown-unknown --toolchain nightly-2023-08-15
 
           cargo install cargo-build-sbf
 
