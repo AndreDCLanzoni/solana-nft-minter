@@ -35,9 +35,15 @@ jobs:
           avm use latest
           anchor --version
 
-          # SBF build support
+          # Switch to nightly for BPF support
+          rustup toolchain install nightly
+          rustup default nightly
+
+          # Add LLVM & BPF target
           rustup component add llvm-tools-preview
           rustup target add bpfel-unknown-unknown
+
+          # Install the BPF build helper
           cargo install cargo-build-sbf
 
       - name: Run tests
