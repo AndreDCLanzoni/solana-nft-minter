@@ -21,12 +21,12 @@ jobs:
 
       - name: Install Solana CLI
         run: |
-         # Download & unpack the Solana CLI directly from GitHub Releases
-         curl -sSfL https://github.com/solana-labs/solana/releases/download/v1.18.20/solana-release-x86_64.tar.bz2 \
-          | tar -xj -C $HOME
-         # Add binaries to PATH immediately
-         export PATH="$HOME/solana-release/bin:$PATH"
-         solana --version 
+          # Install via Anza (reliable on GitHub runners)
+          sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+          # Add it to PATH immediately
+          export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+          solana --version
+
  
       - name: Install Anchor CLI
         run: |
