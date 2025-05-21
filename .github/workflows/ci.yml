@@ -27,11 +27,9 @@ jobs:
           export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
           solana --version
           
-      - name: Remove Rust toolchain override
-        run: |
-          rm -f .rust-toolchain .rust-toolchain.toml
-          rm -f nft_minter/.rust-toolchain nft_minter/.rust-toolchain.toml
-          rm -f nft_minter/programs/nft_minter/.rust-toolchain nft_minter/programs/nft_minter/.rust-toolchain.toml
+      - name: Remove all Rust toolchain overrides (root + all subdirs)
+        - run: |
+          find . -name ".rust-toolchain*" -exec rm -f {} +
 
       - name: Install Anchor CLI & SBF toolchain
         run: |
