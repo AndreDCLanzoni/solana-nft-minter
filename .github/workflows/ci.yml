@@ -30,6 +30,8 @@ jobs:
       - name: Remove Rust toolchain override
         run: |
           rm -f .rust-toolchain .rust-toolchain.toml
+          rm -f nft_minter/.rust-toolchain nft_minter/.rust-toolchain.toml
+          rm -f nft_minter/programs/nft_minter/.rust-toolchain nft_minter/programs/nft_minter/.rust-toolchain.toml
 
       - name: Install Anchor CLI & SBF toolchain
         run: |
