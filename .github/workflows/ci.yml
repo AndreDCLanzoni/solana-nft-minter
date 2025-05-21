@@ -26,7 +26,7 @@ jobs:
           # Add it to PATH immediately
           export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
           solana --version
-          
+
       - name: Remove all Rust toolchain overrides (root + all subdirs)
         run: |
           find . -name ".rust-toolchain*" -exec rm -f {} +
